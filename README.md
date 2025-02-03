@@ -6,7 +6,8 @@ Use this as a starting point to complete the WDD 330 team activity: the SleepOut
 
 ## Prerequisites
 
-- You must have Node installed. visit https://byui-cit.github.io/advcss/lesson01/l01-software.html and skip to the Node section for instructions
+- You must have Node installed to run the following commands.
+[https://byui-cit.github.io/advcss/lesson01/l01-software.html](https://byui-cse.github.io/wdd330-ww-course/intro/) 
 
 ## Setup
 
