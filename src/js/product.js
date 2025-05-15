@@ -1,7 +1,35 @@
-import { setLocalStorage } from "./utils.mjs";
+
+import { getParam } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
+import ProductDetails from "./ProductDetails.mjs";
 
 const dataSource = new ProductData("tents");
+const productID = getParam("product");
+
+const product = new ProductDetails(productID, dataSource);
+product.init();
+
+
+
+
+/*
+
+// import { setLocalStorage } from "./utils.mjs";
+import ProductData from "./ProductData.mjs";
+
+// Import function for getParam(param) from utils.mjs
+import { getParam } from "./utils.mjs";
+
+
+/*
+const dataSource = new ProductData("tents");
+const productId = getParam('product');
+*/
+
+/*
+console.log(dataSource.findProductById(productId));
+
+*/
 
 // The Issue is with this function
 /**
@@ -16,19 +44,25 @@ Then we add "Item B", and it replaces it — "Item A" is gone.
  */
 // SOLUTION TO FIX THE PROBLEM:
 // Defining the getLocalStorage
+/*
 function getLocalStorage(key) {
   const data = localStorage.getItem(key);
   return data ? JSON.parse(data) : [];
 }
+  */
 // Read the current cart from local storage.
 // If there's nothing, use an empty array.
 // Add the new product to the cart.
 // Save the updated cart back to local storage.
+/*
 function addProductToCart(product) {
   let cart = getLocalStorage("so-cart") || [];
   cart.push(product);
   setLocalStorage("so-cart", cart);
 }
+*/
+
+/*
 
 // add to cart button event handler
 async function addToCartHandler(e) {
@@ -40,3 +74,7 @@ async function addToCartHandler(e) {
 document
   .getElementById("addToCart")
   .addEventListener("click", addToCartHandler);
+
+
+*/
+  
