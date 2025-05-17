@@ -25,7 +25,11 @@ function getLocalStorage(key) {
 // Add the new product to the cart.
 // Save the updated cart back to local storage.
 function addProductToCart(product) {
-  let cart = getLocalStorage("so-cart") || [];
+  let cart = getLocalStorage("so-cart");
+  if (!cart) {
+    cart = [];
+  }
+
   cart.push(product);
   setLocalStorage("so-cart", cart);
 }
