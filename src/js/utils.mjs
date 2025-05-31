@@ -21,8 +21,8 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
-
-function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
+/* --ec -- made adjustments to this section lines 25 - 36*/
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = true) {
   // Optionally clear existing content in the parent element
   if (clear) {
     parentElement.innerHTML = "";
