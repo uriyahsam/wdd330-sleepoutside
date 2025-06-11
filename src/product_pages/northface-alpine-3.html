@@ -80,9 +80,37 @@
         <div class="product-detail__add">
           <button id="addToCart" data-id="985PR">Add to Cart</button>
         </div>
+
+        <section class="comments-section divider">
+          <h3>Comments</h3>
+          <ul id="commentList"></ul>
+          <form id="commentForm">
+            <label for="commentText" style="display: block; margin-bottom: 4px;">
+              Add a comment:
+            </label>
+            <input
+              type="text"
+              id="commentText"
+              name="commentText"
+              required
+              style="display: block; margin-bottom: 8px;"
+            />
+            <button
+              type="submit"
+              style="display: block; margin-bottom: 16px;"
+            >
+              Submit
+            </button>
+          </form>
+        </section>
       </section>
     </main>
 
     <footer>&copy;NOT a real business</footer>
+
+    <script type="module">
+      import { setupComments } from "../js/comments.js";
+      setupComments("985PR");
+    </script>
   </body>
 </html>
