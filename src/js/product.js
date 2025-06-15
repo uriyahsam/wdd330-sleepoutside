@@ -1,42 +1,36 @@
-import { setLocalStorage } from "./utils.mjs";
-import ProductData from "./ProductData.mjs";
+import { getParam } from './utils.mjs';
+import { setLocalStorage } from './utils.mjs';
+import ProductData from './ProductData.mjs';
+import ProductDetails from './ProductDetails.mjs';
+import { applyDiscountBadges } from './utils/price.js';
 
-const dataSource = new ProductData("tents");
+const productId = getParam('product');
+const dataSource = new ProductData('tents');
+const product = new ProductDetails(productId, dataSource);
 
-// The Issue is with this function
-/**
-function addProductToCart(product) {
-  setLocalStorage("so-cart", product);
-}
-EXPLANATION:
-setLocalStorage("so-cart", product) overwrites 
-the "so-cart" key in localStorage with just the latest product.
-So if we add "Item A", it stores just "Item A". 
-Then we add "Item B", and it replaces it — "Item A" is gone.
- */
-// SOLUTION TO FIX THE PROBLEM:
-// Defining the getLocalStorage
 function getLocalStorage(key) {
   const data = localStorage.getItem(key);
   return data ? JSON.parse(data) : [];
 }
-// Read the current cart from local storage.
-// If there's nothing, use an empty array.
-// Add the new product to the cart.
-// Save the updated cart back to local storage.
-function addProductToCart(product) {
-  let cart = getLocalStorage("so-cart") || [];
-  cart.push(product);
-  setLocalStorage("so-cart", cart);
+
+function addProductToCart(productObj) {
+  const cart = getLocalStorage('so-cart');
+  cart.push(productObj);
+  setLocalStorage('so-cart', cart);
 }
 
-// add to cart button event handler
 async function addToCartHandler(e) {
-  const product = await dataSource.findProductById(e.target.dataset.id);
-  addProductToCart(product);
+  const id = e.target.dataset.id;
+  if (!id) return;
+  const productObj = await dataSource.findProductById(id);
+  addProductToCart(productObj);
 }
 
-// add listener to Add to Cart button
-document
-  .getElementById("addToCart")
-  .addEventListener("click", addToCartHandler);
+document.addEventListener('DOMContentLoaded', async () => {
+  await product.init();
+
+  const btn = document.getElementById('addToCart');
+  if (btn) btn.addEventListener('click', addToCartHandler);
+
+  applyDiscountBadges();
+});
