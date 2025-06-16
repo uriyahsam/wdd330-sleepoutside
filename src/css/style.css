@@ -272,3 +272,18 @@ footer {
   display: inline-block;
   margin-top: 0.25em;
 }
+
+.breadcrumb {
+  margin: 1rem;
+  font-size: 0.9rem;
+}
+.breadcrumb a {
+  color: #0077cc;
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+.breadcrumb span {
+  margin: 0 0.5rem;
+}
